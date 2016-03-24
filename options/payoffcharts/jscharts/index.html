@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8"></meta>
+    <head>
+        <title>Testing Web Stuff </title>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.min.js"></script>
+        
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        
+        <!-- Angular UI -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+
+        
+        <!-- Highcharts -->
+        <script type="text/javascript" src="lib/highcharts.js"></script>
+        
+        <!-- Application files -->
+        <script type="text/javascript" src="js/app.js"></script>
+        
+        <!-- Page level controllers -->
+        <script type="text/javascript" src="js/controllers/option-ctrl.js"></script>
+        
+        <!-- Model objects -->
+        <script type="text/javascript" src="js/model/option.js"></script>
+        
+        <!-- The option leg component -->
+        <script type="text/javascript" src="js/components/optionleg/option-leg-dir.js"></script>
+        
+        <!-- The option payoff chart component -->
+        <script type="text/javascript" src="js/components/optionpayoffchart/calculators/long-call-calc-svc.js"></script>
+        <script type="text/javascript" src="js/components/optionpayoffchart/calculators/long-put-calc-svc.js"></script>
+        <script type="text/javascript" src="js/components/optionpayoffchart/calculators/short-call-calc-svc.js"></script>
+        <script type="text/javascript" src="js/components/optionpayoffchart/calculators/short-put-calc-svc.js"></script>
+        <script type="text/javascript" src="js/components/optionpayoffchart/calculators/payoff-calc-svc.js"></script>
+        <script type="text/javascript" src="js/components/optionpayoffchart/calculators/long-underlying-svc.js"></script>
+        <script type="text/javascript" src="js/components/optionPayoffChart/option-payoff-ctrl.js"></script>
+        <script type="text/javascript" src="js/components/optionpayoffchart/option-payoff-chart-dir.js"></script>
+    </head>
+    <body>
+        <div ng-app="webplay">
+            <ng-view></ng-view>
+        </div>
+    </body>
+</html>

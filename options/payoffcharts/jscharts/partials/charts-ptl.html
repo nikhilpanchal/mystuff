@@ -1,0 +1,10 @@
+<div ng-controller="optionCtrl">
+    <div ng-repeat="option in options">
+        <option-leg></option-leg>
+    </div>
+    
+    <button class="btn btn-default" ng-click="createLeg()">Create Leg</button>
+    <button class="btn btn-default" ng-click="drawChart()">Draw Chart</button>
+    
+    <!--<option-payoff-chart options=opCtrl.options></option-payoff-chart>-->
+</div>

@@ -1,0 +1,29 @@
+<div>
+    <label>Side: </label>
+    <select id="side" ng-model="option.side">
+        <option value="Buy">Buy</option>
+        <option value="Sell">Sell</option>
+    </select>
+</div>
+
+<div>
+    <label>Type: </label>
+    <select ng-model="option.type">
+        <option value="Call">Call</option>
+        <option value="Put">Put</option>
+        <option value="Stock">Stock</option>
+    </select>
+</div>
+
+<div>
+    <label>Strike: </label>
+    <input type="number" ng-model="option.strike" ng-disabled="isStock()">
+</div>
+
+
+<div>
+    <label>Price: </label>
+    <input type="number" ng-model="option.price">
+</div>
+
+<hr>
