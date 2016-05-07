@@ -9,7 +9,16 @@ class Portfolio:
     def __init__(self):
         # Positions in the portfolio, keyed by the symbol
         self.positions = {}
-        pass
+
+        # The amount of cash in the portfolio
+        self.cash = 0
+
+        # The market value of the portfolio
+        self.market_value = 0
+
+        # The date at which the market value was calculated
+        self.market_value_date = None
+        
 
     def __get_market_value_on_date(self, date):
         """Calculates the market value of the entire portfolio based on market prices of positions on a given date"""
