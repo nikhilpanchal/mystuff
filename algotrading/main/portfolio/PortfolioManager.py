@@ -1,5 +1,6 @@
 from .Portfolio import Portfolio
 from .Position import Position
+from .report import PortfolioReport,PositionReport
 from marketdata.MarketData import MarketData
 
 from datetime import date
@@ -35,8 +36,9 @@ class PortfolioManager:
         else:
             '''If the portfolio has a position for this symbol, amend it'''
             position = self.portfolio.positions[symbol]
-            position.quantity += quantity
-            position.cost += position_cost
+
+            '''Add the increment to the position'''
+            position.increase(quantity, unit_cost)
 
     def sell_position(self, symbol, quantity, unit_sale_price):
         if symbol not in self.portfolio.positions:
@@ -45,8 +47,16 @@ class PortfolioManager:
 
         position = self.portfolio.positions[symbol]
 
-        '''Reduce the quantity of the position by the amount sold'''
-        position.quantity -= quantity
+        if position.quantity < quantity:
+            '''Check whether the position has enough units to sell'''
+            raise Exception("The portfolio does not have {} units of the symbol {} to see".format(quantity, symbol))
+
+        '''Reduce the quantity and total cost of the position based on the amount sold'''
+        position.decrease(quantity)
+
+        '''If the position quantity is zero, remove it from the portfolio'''
+        if position.quantity == 0:
+            self.portfolio.positions.pop(symbol)
 
         '''Add the proceeds of the sale to the cash'''
         self.portfolio.cash += quantity*unit_sale_price
@@ -78,7 +88,7 @@ class PortfolioManager:
             symbol = position[0]
             position = position[1]
 
-            '''Get the market prive for the symbol for the date specified'''
+            '''Get the market price for the symbol for the date specified'''
             market_price = MarketData.get_stock_price(symbol, date)
 
             '''Calculate the market value of this position'''
@@ -89,5 +99,44 @@ class PortfolioManager:
 
         return portfolio_return
 
+    def get_portfolio_report(self, report_date=date.today()):
+        """Returns a report object for the portfolio that will show all of the metrics of the portfolio.
+        Metrics include: Market Value, Gain/Loss"""
 
+        portfolio_report = PortfolioReport()
+        portfolio_report.report_date = report_date
+        portfolio_report.market_value = self.portfolio.cash
 
+        for position in self.portfolio.positions.items():
+            symbol = position[0]
+            position = position[1]
+
+            '''Get the market price for the symbol for the given date'''
+            symbol_market_value = MarketData.get_stock_price(symbol, report_date)
+
+            '''Calculate the market value for this position'''
+            position_market_value = position.calculate_market_value(symbol_market_value)
+
+            '''Calculate the return for the position for this symbol market value'''
+            position_return = position.calculate_return(symbol_market_value)
+
+            '''Create the position report object with the retrieved data filled in'''
+            position_report = PositionReport()
+            position_report.report_date = report_date
+            position_report.symbol = symbol
+            position_report.symbol_market_value = symbol_market_value
+            position_report.quantity = position.quantity
+            position_report.market_value = position_market_value
+            position_report.total_cost = position.total_cost
+            position_report.gain_or_loss = position_return
+
+            portfolio_report.position_reports.append(position_report)
+
+            '''Update the portfolio numbers'''
+            portfolio_report.market_value += position_market_value
+            portfolio_report.total_cost += position.total_cost
+
+        '''Calculate the portfolio gain or loss'''
+        portfolio_report.gain_or_loss = portfolio_report.market_value - portfolio_report.total_cost
+
+        return portfolio_report

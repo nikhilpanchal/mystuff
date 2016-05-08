@@ -1,4 +1,6 @@
 from portfolio.PortfolioManager import PortfolioManager
+from portfolio.PortfolioView import PortfolioView
+from datetime import date
 
 
 class Controller:
@@ -6,9 +8,7 @@ class Controller:
 
     def __init__(self):
         self.portfolio_manager = PortfolioManager()
-
-    # def run_algo(self, algo_name):
-    #     return algo_name
+        self.portfolio_view = PortfolioView()
 
     def initialize_portfolio(self):
         """Fills it with positions obtained from user input"""
@@ -26,6 +26,16 @@ class Controller:
         port_return = self.portfolio_manager.calculate_return()
 
         print("Portfolio unrealized gain as of today {}".format(port_return))
+
+    def show_portfolio_report(self):
+        """Renders a report for the portfolio as of a provided date"""
+        '''Get the report date from user input. For now hard coding it.'''
+        report_date = date.today()
+
+        portfolio_report = self.portfolio_manager.get_portfolio_report(report_date)
+        self.portfolio_view.show_report(portfolio_report)
+
+
 
 
 if __name__ == '__main__':
