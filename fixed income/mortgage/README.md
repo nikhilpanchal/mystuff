@@ -1,7 +1,7 @@
 # Mortgage Calculator
 
 ### Objective
-Students must write a mortgage calculator. The program must be able to take in specifics about a mortgage as listed below
+I write a mortgage calculator. The program must be able to take in specifics about a mortgage as listed below
  * The Principal to be borrowed
  * The Rate of the Loan
  * The term of Loan (in years)
