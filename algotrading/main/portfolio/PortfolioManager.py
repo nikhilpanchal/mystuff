@@ -1,6 +1,6 @@
 from .Portfolio import Portfolio
 from .Position import Position
-from .report import PortfolioReport,PositionReport
+from .report import PortfolioReport, PositionReport
 from marketdata.MarketData import MarketData
 
 from datetime import date
@@ -29,7 +29,7 @@ class PortfolioManager:
 
         if symbol not in self.portfolio.positions:
             '''If the symbol doesnt exist in the portfolio create a new position for it'''
-            position = Position(symbol, quantity, position_cost)
+            position = Position(symbol, quantity, unit_cost)
 
             '''Add to the portfolio'''
             self.portfolio.positions[symbol] = position
@@ -61,7 +61,7 @@ class PortfolioManager:
         '''Add the proceeds of the sale to the cash'''
         self.portfolio.cash += quantity*unit_sale_price
 
-    def calculate_market_value(self, date=date.today()):
+    def calculate_market_value(self, market_value_date=date.today()):
         """Returns the market value of the portfolio, by summing up the market value of all of its positions"""
         portfolio_market_value = self.portfolio.cash
 
@@ -70,7 +70,7 @@ class PortfolioManager:
             position = position_entry[1]
 
             '''Get market price for this symbol for the date specified'''
-            market_price = MarketData.get_stock_price(symbol, date)
+            market_price = MarketData.get_stock_price(symbol, market_value_date)
 
             '''Calculate the market value of this position'''
             position_market_value = position.calculate_market_value(market_price)
