@@ -6,5 +6,6 @@ class MarketData:
 
     @staticmethod
     def get_stock_price(ticker, date):
-        """Takes in a stock ticker and a date and returns the closing price of that stock for that date"""
+        """Takes in a stock ticker and a date and returns the closing price of
+        that stock for that date"""
         return 10

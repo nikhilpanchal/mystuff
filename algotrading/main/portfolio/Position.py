@@ -17,11 +17,8 @@ class Position:
         '''Price paid to acquire (all units of) this position'''
         self.total_cost = self.quantity * self.cost
 
-        self.symbol_market_value = 0
         self.market_value = 0
         self.market_value_date = None
-
-
 
     def __str__(self):
         return repr(self.type)
@@ -39,10 +36,11 @@ class Position:
         """Updates the numbers for an increase of this position"""
         '''Calculate the new average unit cost for the position'''
         self.average_unit_cost = (self.average_unit_cost * self.quantity + quantity * unit_cost) \
-                                     / \
-                                     (self.quantity + quantity)
+            / \
+            (self.quantity + quantity)
 
-        '''Set the new total cost of the position based on the new quantity and new average unit cost'''
+        '''Set the new total cost of the position based on the new quantity
+        and new average unit cost'''
         self.quantity += quantity
         self.total_cost += self.average_unit_cost * quantity
 

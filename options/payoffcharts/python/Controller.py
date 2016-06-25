@@ -34,8 +34,8 @@ class Controller(object):
 
 if __name__ == '__main__':
     controller = Controller()
-    controller.get_strategy_payoff([OptionLeg("Buy", "Call", 9, 0),
-                                    OptionLeg("Sell", "Call", 4, 0)])
+    controller.get_strategy_payoff([OptionLeg("Buy", "Put", 4, 0),
+                                    OptionLeg("Sell", "Put", 9, 0)])
 
 #    controller.get_strategy_payoff([OptionLeg("Sell", "Call", 60, 20),
  #                                   OptionLeg("Sell", "Put", 40, 20),
