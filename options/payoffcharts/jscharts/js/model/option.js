@@ -3,4 +3,4 @@ function Option() {
     this.type = "";
     this.strike = 0;
     this.price = 0;
-};
+}
