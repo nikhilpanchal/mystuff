@@ -14,7 +14,7 @@ class LongPutStrategy(BaseStrategy):
 
         """The payoff is the difference between the strike price and the
         price of the underlying stock"""
-        if(stock_price < leg.strike):
+        if stock_price < leg.strike:
             payoff += leg.strike - stock_price
 
         """Since this is a buy, the price gets subtracted from the payoff"""
