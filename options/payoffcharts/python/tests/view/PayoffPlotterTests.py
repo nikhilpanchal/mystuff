@@ -29,6 +29,5 @@ class PlotTests(TestCase):
         plt.show.assert_called_once_with()
 
 
-
 if __name__ == '__main__':
     unittest.main()
