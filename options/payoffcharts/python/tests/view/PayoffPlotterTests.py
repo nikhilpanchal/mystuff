@@ -27,7 +27,3 @@ class PlotTests(TestCase):
         plt.axis.assert_called_once_with([0, 12, -10, 12])
         plt.plot.assert_called_once_with([0, 1], [1, 0], label="Payoff")
         plt.show.assert_called_once_with()
-
-
-if __name__ == '__main__':
-    unittest.main()
