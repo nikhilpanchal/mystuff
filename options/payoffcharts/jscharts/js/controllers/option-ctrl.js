@@ -16,20 +16,12 @@ APP.Controllers.controller('optionCtrl', [
             option.price = 1;
             
             $scope.options.push(option);
-            
-            // option = new Option();
-            // option.side = 'Buy';
-            // option.type = 'Call';
-            // option.strike = 30;
-            // option.price = 1;
-            
-            // $scope.options.push(option);
         }
         
         
         $scope.createLeg = function() {
             $scope.options.push(new Option());
-        }
+        };
         
         $scope.drawChart = function() {
             $uiModal.open({
@@ -40,8 +32,8 @@ APP.Controllers.controller('optionCtrl', [
             }, function(error) {
                 console.log("We're dismissed ");
             });
-        }
+        };
         
         initialize();
     }
-])
+]);
