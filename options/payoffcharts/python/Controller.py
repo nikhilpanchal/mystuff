@@ -38,9 +38,9 @@ if __name__ == '__main__':
                                     OptionLeg("Sell", "Put", 9, 0)])
 
 #    controller.get_strategy_payoff([OptionLeg("Sell", "Call", 60, 20),
- #                                   OptionLeg("Sell", "Put", 40, 20),
-  #                                  OptionLeg("Buy", "Put", 20, 10),
-   #                                 OptionLeg("Buy", "Call", 80, 10)])
+#                                   OptionLeg("Sell", "Put", 40, 20),
+#                                  OptionLeg("Buy", "Put", 20, 10),
+#                                 OptionLeg("Buy", "Call", 80, 10)])
 
 
 #

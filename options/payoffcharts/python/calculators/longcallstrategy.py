@@ -2,12 +2,12 @@ from .basestrategy import BaseStrategy
 
 
 class LongCallStrategy(BaseStrategy):
-    '''The strategy where you buy a Call Option'''
+    """The strategy where you buy a Call Option"""
 
     STRATEGY_NAME = "Buy_Call"
 
     def __init__(self):
-        pass
+        super().__init__()
 
     def calculate_payoff(self, leg, stock_price):
         payoff = 0
@@ -15,7 +15,7 @@ class LongCallStrategy(BaseStrategy):
         '''If the underlying stock price is above the strike price of the
         call option, the payoff is the difference between stock price and
         strike'''
-        if(stock_price > leg.strike):
+        if stock_price > leg.strike:
             payoff = stock_price - leg.strike
 
         '''Subtract the price of the call option'''
